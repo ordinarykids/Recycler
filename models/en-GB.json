@@ -1,8 +1,22 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "city guide",
+      "invocationName": "recyclist",
       "intents": [
+        {
+          "name": "RecycleIntent",
+          "samples": [
+            "how do I recycle {item}",
+            "can I recycle {item}"
+          ],
+          "slots": [
+            {
+              "name": "item",
+              "type": "AMAZON.DeviceType",
+              "samples": []
+            }
+          ]
+        },
         {
           "name": "AboutIntent",
           "samples": [
@@ -86,6 +100,10 @@
         },
         {
           "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
           "samples": []
         }
       ]

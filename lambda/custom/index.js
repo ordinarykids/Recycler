@@ -37,6 +37,29 @@ const LaunchHandler = {
     },
 };
 
+
+const RecycleHandler = {
+    canHandle(handlerInput) {
+        const request = handlerInput.requestEnvelope.request;
+
+        return request.type === 'IntentRequest' && request.intent.name === 'RecycleIntent';
+    },
+    handle(handlerInput) {
+        const attributesManager = handlerInput.attributesManager;
+        const responseBuilder = handlerInput.responseBuilder;
+
+        const requestAttributes = attributesManager.getRequestAttributes();
+
+        return responseBuilder
+            .speak('you dive type is cool')
+            .speak(requestAttributes.t('ABOUT'))
+            .getResponse();
+    },
+};
+
+
+
+// DEMO ===============
 const AboutHandler = {
     canHandle(handlerInput) {
         const request = handlerInput.requestEnvelope.request;
@@ -312,10 +335,10 @@ const FallbackHandler = {
 const languageStrings = {
     en: {
         translation: {
-            WELCOME: 'Welcome to Gloucester Guide!',
-            HELP: 'Say about, to hear more about the city, or say coffee, breakfast, lunch, or dinner, to hear local restaurant suggestions, or say recommend an attraction, or say, go outside. ',
-            ABOUT: 'Gloucester Massachusetts is a city on the Atlantic Ocean.  A popular summer beach destination, Gloucester has a rich history of fishing and ship building.',
-            STOP: 'Okay, see you next time!',
+            WELCOME: 'Welcome to the San Jose Recycler!',
+            HELP: 'How can I recycle, then the name of any item.  ',
+            ABOUT: 'This is an early prototype for voice assisted recyling technology. One day, we hope that this is a native service built into all phones. ',
+            STOP: 'If it\s not green, it\'s obscene!',
         },
     },
     // , 'de-DE': { 'translation' : { 'TITLE'   : "Local Helfer etc." } }
@@ -393,8 +416,8 @@ const data = {
     ],
 };
 
-const SKILL_NAME = 'Gloucester Guide';
-const FALLBACK_MESSAGE = `The ${SKILL_NAME} skill can\'t help you with that.  It can help you learn about Gloucester if you say tell me about this place. What can I help you with?`;
+const SKILL_NAME = 'Recycler';
+const FALLBACK_MESSAGE = `The ${SKILL_NAME} skill can\'t help you with that.  I can help you with find out about recyling in San Jose and tell you about Jason Herring and Matt Glasser from Aleph. `;
 const FALLBACK_REPROMPT = 'What can I help you with?';
 
 
@@ -492,6 +515,7 @@ const skillBuilder = Alexa.SkillBuilders.custom();
 exports.handler = skillBuilder
     .addRequestHandlers(
         LaunchHandler,
+        RecycleHandler,
         AboutHandler,
         CoffeeHandler,
         BreakfastHandler,

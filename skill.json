@@ -1,5 +1,5 @@
 {
-  "skillManifest": {
+  "manifest": {
     "publishingInformation": {
       "locales": {
         "en-US": {
@@ -9,7 +9,7 @@
             "Alexa tell city guide i'm hungry",
             "Alexa ask city guide to give me an activity"
           ],
-          "name": "City Guide",
+          "name": "SanJoseRecycler",
           "description": "Ask an expert for a recommendation on what to do in your city. You can even ask for tips within a specific distance."
         }
       },
@@ -22,7 +22,7 @@
       "custom": {
         "endpoint": {
           "sourceDir": "lambda/custom",
-          "uri": "ask-custom-city-guide-default"
+          "uri": "ask-custom-SanJoseRecycler-default"
         }
       }
     },
